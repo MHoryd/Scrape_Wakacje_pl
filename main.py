@@ -5,7 +5,7 @@ import json
 
 
 
-class ScrapControler:
+class ScrapeControler:
 
 
     def run(self):
@@ -25,5 +25,5 @@ class ScrapControler:
 
 
 if __name__ == '__main__':
-    SC = ScrapControler()
+    SC = ScrapeControler()
     SC.run()

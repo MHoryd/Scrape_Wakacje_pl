@@ -9,12 +9,12 @@ from datetime import datetime
 import re
 
 
-agr_button = "//button[contains(text(),'AKCEPTUJĘ I PRZECHODZĘ DO SERWISU')]"
-all_offers_on_page = "//a[@data-test-offer-id]"
-pagination_div = "//div[@data-area='pagination']"
-next_page_button = "//a[@type='next']"
-page_bottom = "//div[@data-area='center']"
-no_results_found = "//p[contains(text(),'Nie znaleźliśmy ofert, które spełniają wszystkie wybrane kryteria.')]"
+privacy_agreement_button_xpath = "//button[contains(text(),'AKCEPTUJĘ I PRZECHODZĘ DO SERWISU')]"
+all_offers_on_page_xpath = "//a[@data-test-offer-id]"
+pagination_div_xpath = "//div[@data-area='pagination']"
+next_page_button_xpath = "//a[@type='next']"
+page_bottom_xpath = "//div[@data-area='center']"
+no_results_found_xpath = "//p[contains(text(),'Nie znaleźliśmy ofert, które spełniają wszystkie wybrane kryteria.')]"
 
 
 class Scrape_wakacje_pl:
@@ -30,14 +30,14 @@ class Scrape_wakacje_pl:
 
         
 
-    def locate_elem(self, xpath, time_to_wait = 5):
+    def locate_elem_by_xpath(self, xpath, time_to_wait = 5):
         try:
             elem = WebDriverWait(driver=self.driver,timeout=time_to_wait).until(ec.visibility_of_element_located((By.XPATH,xpath)))
             return elem
         except TimeoutException:
             return False
 
-    def locate_next_page_button(self, xpath, time_to_wait = 5):
+    def locate_next_page_button_by_xpath(self, xpath, time_to_wait = 5):
         try:
             elem = WebDriverWait(driver=self.driver,timeout=time_to_wait).until(ec.visibility_of_element_located((By.XPATH,xpath)))
             return elem.is_displayed()
@@ -52,7 +52,7 @@ class Scrape_wakacje_pl:
         except TimeoutException:
             return False
 
-    def locate_elems(self, xpath, time_to_wait = 5):
+    def locate_elems_by_xpath(self, xpath, time_to_wait = 5):
         try:
             elems = WebDriverWait(driver=self.driver,timeout=time_to_wait).until(ec.presence_of_all_elements_located((By.XPATH,xpath)))
             return elems
@@ -66,9 +66,9 @@ class Scrape_wakacje_pl:
         except TimeoutException:
             return True
         
-    def assess_are_any_matching_vacations(self, time_to_wait = 0.5):
+    def assess_is_any_matching_vacations_on_page(self, time_to_wait = 0.5):
         try:
-            WebDriverWait(driver=self.driver, timeout=time_to_wait).until(ec.visibility_of_element_located((By.XPATH, no_results_found)))
+            WebDriverWait(driver=self.driver, timeout=time_to_wait).until(ec.visibility_of_element_located((By.XPATH, no_results_found_xpath)))
             return True
         except TimeoutException:
             return False
@@ -102,9 +102,9 @@ class Scrape_wakacje_pl:
         self.driver = webdriver.Chrome()
         self.driver.get(self.URL)
         self.driver.maximize_window()
-        elem = self.locate_elem(agr_button)
+        elem = self.locate_elem_by_xpath(privacy_agreement_button_xpath)
         elem.click()
-        no_results_found_by_provided_params = self.assess_are_any_matching_vacations()
+        no_results_found_by_provided_params = self.assess_is_any_matching_vacations_on_page()
         if no_results_found_by_provided_params:
             self.driver.quit()
             return False
@@ -113,15 +113,15 @@ class Scrape_wakacje_pl:
             Continue_click_next = True
             Continue_scroll_down = True
             while Continue_scroll_down:
-                self.locate_elem('//picture')
+                self.locate_elem_by_xpath('//picture')
                 base_elem = self.locate_elem_by_tag_name('body')
                 base_elem.send_keys(Keys.PAGE_DOWN)
-                Continue_scroll_down = self.assess_do_scroll_down(page_bottom)
+                Continue_scroll_down = self.assess_do_scroll_down(page_bottom_xpath)
                 if Continue_scroll_down == False:
                     try:
-                        vacations_offers = self.locate_elems(all_offers_on_page)
+                        vacations_offers = self.locate_elems_by_xpath(all_offers_on_page_xpath)
                         self.get_results_from_page(vacations_offers)
-                        elem = self.locate_elem(next_page_button)
+                        elem = self.locate_elem_by_xpath(next_page_button_xpath)
                         if elem == False:
                             Continue_click_next=False
                             self.driver.quit()
