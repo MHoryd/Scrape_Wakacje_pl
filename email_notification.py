@@ -10,15 +10,15 @@ class Email_notifi():
     
     def __init__(self):
         self.sender = os.environ.get('Notification_email')
-        self.receiver = os.environ.get('Notification_receiver_email')
+        self.receivers = os.environ.get('Notification_receivers_email')
         self.password = os.environ.get('Notification_pass')
         self.smtp_server = os.environ.get('Notification_smtp_server')
 
 
-    def create_message(self):
+    def create_message(self, receiver):
         msg = MIMEMultipart()
         msg['From'] = self.sender
-        msg['To'] = self.receiver
+        msg['To'] = receiver
         msg['Subject'] = f"Wakacje PL scrape {datetime.now().date()}"
         body = "The attachments contain information about offers that meet the criteria."
         msg.attach(MIMEText(body, 'plain'))
@@ -36,7 +36,9 @@ class Email_notifi():
             server = SMTP(self.smtp_server)
             server.starttls()
             server.login(self.sender, self.password)
-            server.sendmail(self.sender,self.receiver,self.create_message().as_string())
+            for receiver in self.receivers:
+                msg = self.create_message(receiver).as_string()
+                server.sendmail(self.sender,receiver,msg)
             server.quit()
         except Exception as e:
             print(f"Error: Unable to establish an SMTP connection{datetime.now()}")
