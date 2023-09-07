@@ -1,0 +1,15 @@
+[
+    {
+        "filtering_params":{
+            "max_price" : 9000,
+            "min_duration" : 1
+    },
+        "scrape_params":{
+            "country":"tajlandia",
+            "date_from":"2023-11-01",
+            "date_to":"2023-12-15",
+            "stay_length":"1-11",
+            "stars":"4-gwiazdkowe"    
+    }
+    }
+    ]

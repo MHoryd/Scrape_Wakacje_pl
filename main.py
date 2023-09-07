@@ -23,6 +23,7 @@ class ScrapeControler:
                     report.compose_report()
                     report.finalize_and_save_report()
         EN = Email_notifi()
+        EN.send_message()
 
 
 
