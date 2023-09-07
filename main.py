@@ -23,11 +23,11 @@ class ScrapeControler:
                     report = ReportGenerator(filtered_result.match_list,param)
                     report.compose_report()
                     report.finalize_and_save_report()
-        EN = Email_notifi()
-        EN.send_message()
         FM = file_manager()
-
-
+        if FM.reports_files_presence_check():
+            EN = Email_notifi()
+            EN.send_message()
+            FM.delete_report_files()
 
 if __name__ == '__main__':
     SC = ScrapeControler()
