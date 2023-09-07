@@ -2,6 +2,7 @@ from scrape_wakacje_pl import Scrape_wakacje_pl
 from filter_results import FilterResults
 from report_generator import ReportGenerator
 from email_notification import Email_notifi
+from file_manager import file_manager
 import json
 
 
@@ -24,6 +25,7 @@ class ScrapeControler:
                     report.finalize_and_save_report()
         EN = Email_notifi()
         EN.send_message()
+        FM = file_manager()
 
 
 
