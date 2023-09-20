@@ -10,7 +10,7 @@ class Email_notifi():
     
     def __init__(self):
         self.sender = os.environ.get('Notification_email')
-        self.receivers = os.environ.get('Notification_receivers_email')
+        self.receivers = os.environ.get('Notification_receivers_email').split(',')
         self.password = os.environ.get('Notification_pass')
         self.smtp_server = os.environ.get('Notification_smtp_server')
 

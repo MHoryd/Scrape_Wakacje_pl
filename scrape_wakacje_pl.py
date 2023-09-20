@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from datetime import datetime
 import re
+from selenium.webdriver.chrome.service import Service
 
 
 privacy_agreement_button_xpath = "//button[contains(text(),'AKCEPTUJĘ I PRZECHODZĘ DO SERWISU')]"
@@ -27,7 +28,9 @@ class Scrape_wakacje_pl:
         self.stars = kwarg['stars']
         self.URL = f'https://www.wakacje.pl/wczasy/{self.country}/?od-{self.date_from},do-{self.date_to},{self.stay_length}-dni,samolotem,all-inclusive,{self.stars},z-warszawy&src=fromFilters'
         self.deals_dictionary_list = []
-
+        self.s = Service('/usr/lib/chromium-browser/chromedriver')
+        self.options = webdriver.ChromeOptions()
+        self.options.add_argument('--headless')
         
 
     def locate_elem_by_xpath(self, xpath, time_to_wait = 5):
@@ -99,7 +102,7 @@ class Scrape_wakacje_pl:
                 self.deals_dictionary_list.append(new_offer)
 
     def scrape(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(service=self.s, options=self.options)
         self.driver.get(self.URL)
         self.driver.maximize_window()
         elem = self.locate_elem_by_xpath(privacy_agreement_button_xpath)
