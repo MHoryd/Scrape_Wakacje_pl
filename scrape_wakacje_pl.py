@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException, StaleElementReferenceEx
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from datetime import datetime
-import re
+import re, os
 from selenium.webdriver.chrome.service import Service
 
 
@@ -102,7 +102,10 @@ class Scrape_wakacje_pl:
                 self.deals_dictionary_list.append(new_offer)
 
     def scrape(self):
-        self.driver = webdriver.Chrome(service=self.s, options=self.options)
+        if os.name == 'posix':
+            self.driver = webdriver.Chrome(service=self.s, options=self.options)
+        else:
+            self.driver = webdriver.Chrome()
         self.driver.get(self.URL)
         self.driver.maximize_window()
         elem = self.locate_elem_by_xpath(privacy_agreement_button_xpath)
