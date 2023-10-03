@@ -11,6 +11,8 @@ class ScrapeControler:
 
 
     def run(self):
+        FM = file_manager()
+        FM.check_is_report_dir_present()
         with open('search_params.json', mode='r') as f:
             params = json.load(f)
 
@@ -21,10 +23,8 @@ class ScrapeControler:
                 filtered_result = FilterResults(scrapped_data,param['filtering_params'])
                 if filtered_result.match_list:
                     report = ReportGenerator(filtered_result.match_list,param)
-                    report.check_is_report_dir_present()
                     report.compose_report()
                     report.finalize_and_save_report()
-        FM = file_manager()
         if FM.reports_files_presence_check():
             EN = Email_notifi()
             EN.send_message()

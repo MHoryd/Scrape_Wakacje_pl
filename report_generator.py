@@ -39,10 +39,6 @@ class ReportGenerator:
 """
 
 
-    def check_is_report_dir_present(self):
-        if os.path.exists('./Reports') == False:
-            os.mkdir('./Reports')
-
     def compose_report(self):
         for item in self.data:
             offer_link = item['offer_link']

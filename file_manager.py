@@ -14,3 +14,7 @@ class file_manager:
         list = os.listdir('./Reports')
         for file in list:
             os.remove('./Reports/' + file)
+
+    def check_is_report_dir_present(self):
+        if os.path.exists('./Reports') == False:
+            os.mkdir('./Reports')
