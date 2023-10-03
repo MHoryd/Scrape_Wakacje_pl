@@ -21,6 +21,7 @@ class ScrapeControler:
                 filtered_result = FilterResults(scrapped_data,param['filtering_params'])
                 if filtered_result.match_list:
                     report = ReportGenerator(filtered_result.match_list,param)
+                    report.check_is_report_dir_present()
                     report.compose_report()
                     report.finalize_and_save_report()
         FM = file_manager()

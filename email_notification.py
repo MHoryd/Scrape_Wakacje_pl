@@ -14,7 +14,6 @@ class Email_notifi():
         self.password = os.environ.get('Notification_pass')
         self.smtp_server = os.environ.get('Notification_smtp_server')
 
-
     def create_message(self, receiver):
         msg = MIMEMultipart()
         msg['From'] = self.sender

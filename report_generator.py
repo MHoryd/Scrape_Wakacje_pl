@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 class ReportGenerator:
 
@@ -36,6 +37,11 @@ class ReportGenerator:
 <body>
     <ul>
 """
+
+
+    def check_is_report_dir_present(self):
+        if os.path.exists('./Reports') == False:
+            os.mkdir('./Reports')
 
     def compose_report(self):
         for item in self.data:
