@@ -6,13 +6,16 @@ from email import encoders
 from datetime import datetime
 import os
 
+
 class Email_notifi():
     
+
     def __init__(self):
         self.sender = os.environ.get('Notification_email')
         self.receivers = os.environ.get('Notification_receivers_email').split(',')
         self.password = os.environ.get('Notification_pass')
         self.smtp_server = os.environ.get('Notification_smtp_server')
+
 
     def create_message(self, receiver):
         msg = MIMEMultipart()
@@ -29,6 +32,7 @@ class Email_notifi():
             part.add_header('Content-Disposition', f"attachment; filename= {filename}")
             msg.attach(part)
         return msg
+
 
     def send_message(self):
         try:

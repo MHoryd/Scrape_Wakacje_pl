@@ -6,6 +6,7 @@ from datetime import datetime
 import re, os
 from selenium.webdriver.chrome.service import Service
 from selenium_helpers import Selenium_Helpers
+from url_generator import Url_generator
 
 
 privacy_agreement_button_xpath = "//button[contains(text(),'AKCEPTUJĘ I PRZECHODZĘ DO SERWISU')]"
@@ -18,13 +19,10 @@ no_results_found_xpath = "//p[contains(text(),'Nie znaleźliśmy ofert, które s
 
 class Scrape_wakacje_pl:
 
-    def __init__(self, **kwarg):
-        self.country = kwarg['country']
-        self.date_from = kwarg['date_from']
-        self.date_to = kwarg['date_to']
-        self.stay_length = kwarg['stay_length']
-        self.stars = kwarg['stars']
-        self.URL = f'https://www.wakacje.pl/wczasy/{self.country}/?od-{self.date_from},do-{self.date_to},{self.stay_length}-dni,samolotem,all-inclusive,{self.stars},z-warszawy&src=fromFilters'
+
+    def __init__(self, param):
+        self.URL_object = Url_generator(**param)
+        self.URL = self.URL_object.format_url()
         self.deals_dictionary_list = []
         self.s = Service('/usr/lib/chromium-browser/chromedriver')
         self.options = webdriver.ChromeOptions()
@@ -55,6 +53,7 @@ class Scrape_wakacje_pl:
                 duration_int = int(''.join(duration_extracted))
                 new_offer['duration'] = duration_int
                 self.deals_dictionary_list.append(new_offer)
+
 
     def scrape(self):
         if os.name == 'posix':
