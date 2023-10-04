@@ -72,7 +72,6 @@ class Scrape_wakacje_pl:
             return False
         Continue_click_next = True
         while Continue_click_next:
-            Continue_click_next = True
             Continue_scroll_down = True
             while Continue_scroll_down:
                 SH.locate_elem_by_xpath(xpath='//picture')
