@@ -10,13 +10,13 @@ class Url_generator:
         self.transportation = kwarg['transportation']
         self.amenities = kwarg['amenities']
         self.stars = kwarg['stars']
-        self.depature_city = kwarg['depature_city']
+        self.departure_city = kwarg['departure_city']
 
 
     def format_url(self):
         url = "https://www.wakacje.pl/wczasy/{country}/?od-{date_from},do-{date_to},{stay_length}-dni, " \
-        "do-{max_price}zl,{transportation},{amenities},{stars},{depature_city}," \
+        "do-{max_price}zl,{transportation},{amenities},{stars},{departure_city}," \
         "za-wszystkich&src=fromFilters".format(country=self.country,date_from=self.date_from,date_to=self.date_to,stay_length=self.stay_length,
         max_price=self.max_price, transportation=self.transportation, amenities=self.amenities, stars=self.stars, 
-        depature_city=self.depature_city)
+        departure_city=self.departure_city)
         return url

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1>Search Params Data</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Stay Length</th>
+            <th>Stars</th>
+            <th>Max Price</th>
+            <th>Transportation</th>
+            <th>Amenities</th>
+            <th>Departure City</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in params_list %}
+            <tr>
+                <td>{{ result.country }}</td>
+                <td>{{ result.date_from }}</td>
+                <td>{{ result.date_to }}</td>
+                <td>{{ result.stay_length }}</td>
+                <td>{{ result.stars }}</td>
+                <td>{{ result.max_price }}</td>
+                <td>{{ result.transportation }}</td>
+                <td>{{ result.amenities }}</td>
+                <td>{{ result.depature_city }}</td>
+                <td><button>Edit</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

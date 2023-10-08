@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import re, os
 from selenium.webdriver.chrome.service import Service
-from selenium_helpers import Selenium_Helpers
-from url_generator import Url_generator
+from Scrape_script.selenium_helpers import Selenium_Helpers
+from Scrape_script.url_generator import Url_generator
 
 
 privacy_agreement_button_xpath = "//button[contains(text(),'AKCEPTUJĘ I PRZECHODZĘ DO SERWISU')]"

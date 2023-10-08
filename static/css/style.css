@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  form {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+
+  input[type="text"],
+  input[type="number"],
+  select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  /* Style the submit button */
+  input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  /* Add some spacing between form elements */
+  br {
+      margin-bottom: 10px;
+  }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* Style table headers */
+  th {
+      background-color: #007BFF;
+      color: white;
+      text-align: left;
+      padding: 8px;
+  }
+
+  /* Style table rows */
+  tr {
+      border-bottom: 1px solid #ddd;
+  }
+
+  /* Style table data cells */
+  td {
+      padding: 8px;
+      text-align: left;
+  }
+
+  /* Apply alternating row background color */
+  tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }

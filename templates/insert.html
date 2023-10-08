@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+
+<form method="POST">
+  {{ form.csrf_token }}
+  {{form.country.label}}<br>
+  {{form.country}}<br>
+  {{form.date_from.label}}<br>
+  {{form.date_from}}<br>
+  {{form.date_to.label}}<br>
+  {{form.date_to}}<br>
+  {{form.stay_length.label}}<br>
+  {{form.stay_length}}<br>
+  {{form.stars.label}}<br>
+  {{form.stars}}<br>
+  {{form.max_price.label}}<br>
+  {{form.max_price}}<br>
+  {{form.transportation.label}}<br>
+  {{form.transportation}}<br>
+  {{form.amenities.label}}<br>
+  {{form.amenities}}<br>
+  {{form.departure_city.label}}<br>
+  {{form.departure_city}}<br>
+  {{form.submit}}
+
+</form>
+
+{% endblock %}
