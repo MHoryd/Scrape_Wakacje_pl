@@ -4,16 +4,38 @@
 <title>{% block title %}Vacation search app{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+<script>
+  function DeleteSearchParam(paramid) {
+
+      const confirmation = confirm('Are you sure you want to delete this entry?');
+      if (confirmation) {
+
+          fetch('/delete/' + paramid, {
+              method: 'DELETE',
+          })
+          .then(response => {
+              if (response.ok) {
+
+                  window.location.reload();
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      }
+  }
+</script>
+
 </head>
 <body>
 
-<head>
   <div class="topnav">
     <a class="{% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
     <a class="{% if request.endpoint == 'list' %}active{% endif %}" href="{{ url_for('list') }}">List all search params</a>
     <a class="{% if request.endpoint == 'insert' %}active{% endif %}" href="{{ url_for('insert') }}">Insert new param</a>
   </div>
-</head>
+
 
 <main>{% block content %}{% endblock %}</main>
 

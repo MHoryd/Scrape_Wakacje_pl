@@ -16,7 +16,6 @@ app.config['SECRET_KEY'] = os.environ.get('Flask_app_secret_key')
 db= SQLAlchemy(app)
 migrate = Migrate(app, db)
 scheduler = APScheduler()
-initial_job_scheduled = False
    
 
 class Search_param(db.Model):
@@ -101,8 +100,15 @@ def task():
             SC.run()
     return redirect('/')
 
+@app.route('/delete/<int:paramid>', methods=['DELETE'])
+def delete_param(paramid):
+    param_to_delete = db.get_or_404(Search_param, paramid)
+    db.session.delete(param_to_delete)
+    db.session.commit()
+    return '', 204
 
 if __name__ == '__main__':
     scheduler.start()
+    app.run(host='0.0.0.0')
     app.run(debug=False)
 

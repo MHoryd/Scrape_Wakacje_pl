@@ -18,6 +18,7 @@
             <th>Amenities</th>
             <th>Departure City</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
                 <td>{{ result.amenities }}</td>
                 <td>{{ result.depature_city }}</td>
                 <td><button>Edit</button></td>
+                <td><button onclick="DeleteSearchParam({{ result.id }})">Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
