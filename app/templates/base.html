@@ -31,9 +31,9 @@
 <body>
 
   <div class="topnav">
-    <a class="{% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
-    <a class="{% if request.endpoint == 'list' %}active{% endif %}" href="{{ url_for('list') }}">List all search params</a>
-    <a class="{% if request.endpoint == 'insert' %}active{% endif %}" href="{{ url_for('insert') }}">Insert new param</a>
+    <a class="{% if request.endpoint == 'main.index' %}active{% endif %}" href="{{ url_for('main.index') }}">Home</a>
+    <a class="{% if request.endpoint == 'list.list_of_params' %}active{% endif %}" href="{{ url_for('list.list_of_params')}}">List all search params</a>
+    <a class="{% if request.endpoint == 'insert.insert_new_param' %}active{% endif %}" href="{{ url_for('insert.insert_new_param')}}">Insert new param</a>
   </div>
 
 

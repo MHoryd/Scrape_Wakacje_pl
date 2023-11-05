@@ -162,4 +162,6 @@ cython_debug/
 Scripts/
 Include/
 pyvenv.cfg
-Migrations/
+migrations/
+Reports/
+app.db

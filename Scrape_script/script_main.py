@@ -1,7 +1,7 @@
-from Scrape_script.scrape_wakacje_pl import Scrape_wakacje_pl
-from Scrape_script.report_generator import ReportGenerator
-from Scrape_script.email_notification import Email_notifi
-from Scrape_script.file_manager import file_manager
+from scrape_script.scrape_wakacje_pl import Scrape_wakacje_pl
+from scrape_script.report_generator import ReportGenerator
+from scrape_script.email_notification import Email_notifi
+from scrape_script.file_manager import file_manager
 
 
 class ScrapeControler:
