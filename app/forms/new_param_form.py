@@ -2,9 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField, DateField,SelectField, IntegerField
 from wtforms.validators import DataRequired
 
-
 class New_param_form(FlaskForm):
-    country = StringField(label="Country", validators=[DataRequired()])
+
+    country = SelectField(label="Country",choices=None, validators=[DataRequired()])
     date_from = DateField(label="Date from", validators=[DataRequired()])
     date_to = DateField(label="Date to", validators=[DataRequired()])
     stay_length = StringField(label="Length of stay to search for. For example format: 1 to 10 days (in format 1-10)", validators=[DataRequired()])

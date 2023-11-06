@@ -29,4 +29,8 @@ def create_app(config_class=Config):
         if len(scheduler.get_jobs()) == 0:
             scheduler.add_job(id='Scrape_script', func=task)
 
+        # Update the list of countries in db
+        from helpers.countries_getter import update_country
+        update_country()
+
     return app
