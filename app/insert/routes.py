@@ -10,12 +10,13 @@ from helpers.countries_getter import update_country
 def insert_new_param():
     form = New_param_form()
     form.country.choices = update_country()
-    if form.validate_on_submit():
+    form.stay_length_slider.data = '1-28'
+    if request.method == 'POST' and form.validate_on_submit():
         new_param = Search_param(
             country = form.country.data,
             date_from = form.date_from.data,
             date_to = form.date_to.data,
-            stay_length = form.stay_length.data,
+            stay_length = form.stay_length_slider.data,
             stars = form.stars.data,
             max_price = form.max_price.data,
             transportation = form.transportation.data,

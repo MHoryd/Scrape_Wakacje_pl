@@ -11,8 +11,10 @@
   {{form.date_from}}<br>
   {{form.date_to.label}}<br>
   {{form.date_to}}<br>
-  {{form.stay_length.label}}<br>
-  {{form.stay_length}}<br>
+  {{form.stay_length_slider.label}}<br>
+  <input type="range" id="stay_lenght_from" min="1" max="28" value="1" oninput="updateSliderValue()"><br>
+  <input type="range" id="stay_lenght_to" min="1" max="28" value="28" oninput="updateSliderValue()"><br>
+  <input type="text" name="stay_length_slider" id="stay_lenght_id" value="{{ form.stay_length_slider.data }}">
   {{form.stars.label}}<br>
   {{form.stars}}<br>
   {{form.max_price.label}}<br>

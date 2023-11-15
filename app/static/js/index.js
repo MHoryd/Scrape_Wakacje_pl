@@ -41,3 +41,12 @@ function ActivateScript() {
             console.error('Error:', error);
         });
 }
+
+
+function updateSliderValue() {
+    var from_value = parseInt(document.getElementById('stay_lenght_from').value);
+    var to_value = parseInt(document.getElementById('stay_lenght_to').value);
+
+    var length_value = from_value + '-' + to_value;
+    document.getElementById('stay_lenght_id').value = length_value;
+}

@@ -7,7 +7,7 @@ class New_param_form(FlaskForm):
     country = SelectField(label="Country",choices=None, validators=[DataRequired()])
     date_from = DateField(label="Date from", validators=[DataRequired()])
     date_to = DateField(label="Date to", validators=[DataRequired()])
-    stay_length = StringField(label="Length of stay to search for. For example format: 1 to 10 days (in format 1-10)", validators=[DataRequired()])
+    stay_length_slider = StringField(label="Length of stay to search for", validators=[DataRequired()])
     stars = SelectField(label="Hotel star count. From 2 to 5",choices=[("2-gwiazdkowe",2),("3-gwiazdkowe",3),("4-gwiazdkowe",4), ("5-gwiazdkowe",5)], validators=[DataRequired()])
     max_price = IntegerField(label="Max price for both", validators=[DataRequired()])
     transportation = SelectField(label="Hotel star count. From 2 to 5",choices=[("samolotem","Samolot"),("samochodem","Dojazd własny"),("autokarem","Autokar")], validators=[DataRequired()])
