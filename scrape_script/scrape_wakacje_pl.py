@@ -29,7 +29,6 @@ class Scrape_wakacje_pl:
         while offers_number > 0:
             self.URL_object.add_next_page_num_to_url()
             offers_number -= 10
-            print(self.URL_object.url)
             request = sesion.get(self.URL_object.url)
             soup_object = BeautifulSoup(request.text, 'html.parser')
             root_elem = etree.HTML(str(soup_object))
