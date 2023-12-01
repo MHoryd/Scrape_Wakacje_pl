@@ -33,7 +33,7 @@
                 <td>{{ result.transportation }}</td>
                 <td>{{ result.amenities }}</td>
                 <td>{{ result.depature_city }}</td>
-                <td><button>Edit</button></td>
+                <td><button onclick="EditSearchParam({{result.id}})">Edit</button></td>
                 <td><button onclick="DeleteSearchParam({{ result.id }})">Delete</button></td>
             </tr>
         {% endfor %}

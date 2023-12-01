@@ -18,6 +18,10 @@ function DeleteSearchParam(paramid) {
     }
 }
 
+function EditSearchParam(paramid) {
+        window.location.href = '/insert/' + paramid;
+    }
+
 function ActivateScript() {
     fetch('/trigger_script', {
         method: 'POST',
