@@ -21,6 +21,6 @@ def task():
                 "departure_city": param_result.departure_city
                 }
             list_to_execute.append(param)
-        if len(list_to_execute) > 0:
+        if list_to_execute:
             SC = ScrapeControler(list_to_execute)
             SC.run()
