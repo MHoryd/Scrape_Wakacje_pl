@@ -23,7 +23,7 @@ class Scrape_wakacje_pl:
         if offers_not_found:
             return False
         script_tags = soup_object.find_all('script')
-        target_tag = script_tags[4]
+        target_tag = script_tags[5]
         reg = re.findall('"count":(\d+)', str(target_tag))
         offers_number = int(reg[1])
         while offers_number > 0:
