@@ -11,3 +11,4 @@ class Search_param(db.Model):
     transportation = db.Column(db.String(60),nullable=False)
     amenities = db.Column(db.String(60),nullable=False)
     departure_city = db.Column(db.String(60),nullable=False)
+    rating = db.Column(db.String(60),nullable=False)

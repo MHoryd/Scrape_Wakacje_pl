@@ -12,15 +12,15 @@ class Url_generator:
         self.amenities = kwarg['amenities']
         self.stars = kwarg['stars']
         self.departure_city = kwarg['departure_city']
+        self.rating = kwarg['rating']
         self.url = ''
 
 
     def format_url(self):
         self.url = "https://www.wakacje.pl/wczasy/{country}/?str-{iteration},od-{date_from},do-{date_to},{stay_length}-dni,"\
-        "do-{max_price}zl,{transportation},{amenities},{stars},{departure_city},"\
+        "do-{max_price}zl,{transportation},{amenities},{stars},{rating},{departure_city},"\
         "za-wszystkich".format(country=self.country,iteration=self.iteration,date_from=self.date_from,date_to=self.date_to,stay_length=self.stay_length,
-        max_price=self.max_price, transportation=self.transportation, amenities=self.amenities, stars=self.stars, 
-        departure_city=self.departure_city)
+        max_price=self.max_price, transportation=self.transportation, amenities=self.amenities, stars=self.stars, rating=self.rating,departure_city=self.departure_city)
 
     def add_next_page_num_to_url(self):
         self.iteration += 1

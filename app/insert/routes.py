@@ -21,7 +21,8 @@ def insert_new_param():
             max_price = form.max_price.data,
             transportation = form.transportation.data,
             amenities = form.amenities.data,
-            departure_city = form.departure_city.data
+            departure_city = form.departure_city.data,
+            rating = form.rating.data
         )
         db.session.add(new_param)
         db.session.commit()
@@ -43,6 +44,7 @@ def edit_existing_param(paramid):
         param_to_edit.transportation = form.transportation.data
         param_to_edit.amenities = form.amenities.data
         param_to_edit.departure_city = form.departure_city.data
+        param_to_edit.rating = form.rating.data
         db.session.commit()
         return redirect("/list")
     return render_template('insert.html',form=form)

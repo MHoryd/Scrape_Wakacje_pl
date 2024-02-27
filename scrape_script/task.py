@@ -18,7 +18,8 @@ def task():
                 "max_price": param_result.max_price,
                 "transportation": param_result.transportation,
                 "amenities": param_result.amenities,
-                "departure_city": param_result.departure_city
+                "departure_city": param_result.departure_city,
+                "rating": param_result.rating
                 }
             list_to_execute.append(param)
         if list_to_execute:
