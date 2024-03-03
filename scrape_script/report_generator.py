@@ -46,7 +46,7 @@ class ReportGenerator:
 
             self.html_template += f"""
             <li>
-                <p>Price: {price}, start_date: {start_date}, end_date: {end_date}, duration: {duration}</p><a href='{offer_link}'>{offer_link}</a>
+                <p>Price: {price}, start_date: {start_date}, end_date: {end_date}, duration: {duration}</p><a href="{offer_link}">{offer_link}</a>
             </li>"""
 
 
