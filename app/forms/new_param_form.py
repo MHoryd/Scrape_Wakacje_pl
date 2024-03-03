@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField, DateField,SelectField, IntegerField
 from wtforms.validators import DataRequired
-from datetime import datetime, date, timedelta
+from datetime import date, timedelta
 
 class New_param_form(FlaskForm):
     today = date.today()

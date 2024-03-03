@@ -9,7 +9,7 @@ def create_app(config_class=Config):
 
     # Initialize Flask extensions here
     db.init_app(app)
-    migrate.init_app(app,db)
+    # migrate.init_app(app,db)
     scheduler.init_app(app)
 
     with app.app_context():
@@ -25,7 +25,6 @@ def create_app(config_class=Config):
 
         # Start the scheduler and scrape script
         scheduler.start()
-        # scheduler.remove_all_jobs()
         if len(scheduler.get_jobs()) == 0:
             scheduler.add_job(id='Scrape_script', func=task)
 

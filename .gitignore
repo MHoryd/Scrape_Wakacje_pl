@@ -163,5 +163,5 @@ Scripts/
 Include/
 pyvenv.cfg
 migrations/
-Reports/
+Reports/*
 app.db
