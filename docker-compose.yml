@@ -10,7 +10,7 @@ services:
       - ./docker.env
     depends_on:
       - postgres
-    restart: 'ununless-stopped'
+    restart: 'unless-stopped'
   postgres:
     container_name: flask_db
     image: postgres:12
@@ -20,7 +20,7 @@ services:
       - ./docker.env
     volumes:
       - pgdata:/var/lib/postgresql/data
-    restart: 'ununless-stopped'
+    restart: 'unless-stopped'
 
 volumes:
   pgdata:
