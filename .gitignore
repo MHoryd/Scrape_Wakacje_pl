@@ -165,3 +165,4 @@ pyvenv.cfg
 migrations/
 Reports/*
 app.db
+docker.env

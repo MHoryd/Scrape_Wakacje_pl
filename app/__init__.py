@@ -1,6 +1,7 @@
 from flask import Flask
 from config import Config
-from app.extensions import db, migrate, scheduler
+from app.extensions import db, scheduler
+# from app.extensions import migrate
 from scrape_script.task import task
 
 def create_app(config_class=Config):
