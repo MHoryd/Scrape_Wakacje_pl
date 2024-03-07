@@ -5,7 +5,7 @@ CREATE TABLE public.destinations (
 	CONSTRAINT destinations_country_key UNIQUE (country),
 	CONSTRAINT destinations_country_label_key UNIQUE (country_label),
 	CONSTRAINT destinations_pkey PRIMARY KEY (id)
-);
+)
 
 CREATE TABLE public.search_param (
 	id serial4 NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE public.search_param (
 	departure_city varchar(60) NOT NULL,
 	rating varchar(100) NOT null,
 	CONSTRAINT search_param_pkey PRIMARY KEY (id)
-);
+)
 
 
 insert into public.search_param (country, date_from,date_to,stay_length,stars,max_price,transportation,amenities,

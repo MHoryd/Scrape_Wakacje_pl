@@ -1,7 +1,6 @@
 from flask import Flask
 from config import Config
 from app.extensions import db, scheduler
-# from app.extensions import migrate
 from scrape_script.task import task
 
 def create_app(config_class=Config):
@@ -10,7 +9,6 @@ def create_app(config_class=Config):
 
     # Initialize Flask extensions here
     db.init_app(app)
-    # migrate.init_app(app,db)
     scheduler.init_app(app)
 
     with app.app_context():
@@ -21,6 +19,8 @@ def create_app(config_class=Config):
         app.register_blueprint(list_bp)
         from app.insert import bp as insert_bp
         app.register_blueprint(insert_bp)
+        from app.schedulerConfig import bp as scheduler_bp
+        app.register_blueprint(scheduler_bp)
 
 
 
