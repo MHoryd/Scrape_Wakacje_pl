@@ -3,7 +3,6 @@ from app.models.search_params import Search_param
 from scrape_script.script_main import ScrapeControler
 
 
-@scheduler.task('cron', id='daily_task', hour=16)
 def task():
     list_to_execute = []
     with scheduler.app.app_context():

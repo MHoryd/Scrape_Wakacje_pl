@@ -19,15 +19,9 @@ def create_app(config_class=Config):
         app.register_blueprint(list_bp)
         from app.insert import bp as insert_bp
         app.register_blueprint(insert_bp)
-        from app.schedulerConfig import bp as scheduler_bp
+        from app.Config import bp as scheduler_bp
         app.register_blueprint(scheduler_bp)
 
-
-
-        # Start the scheduler and scrape script
-        scheduler.start()
-        if len(scheduler.get_jobs()) == 0:
-            scheduler.add_job(id='Scrape_script', func=task)
 
         # Update the list of countries in db
         from helpers.countries_getter import update_country

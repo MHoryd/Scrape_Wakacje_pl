@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="padding-left:16px">
+    <h2 class="config-aligned-table">Scheduler config</h2>
+  </div>
+
+  <table class="config-aligned-table">
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Is On</td>
+      <td>{% if current_job %} True {% else %} False {% endif %}</td>
+    </tr>
+    <tr>
+      <td>Hour</td>
+      <td>{% if current_job %} {{ hour }} {% endif %}</td>
+  
+    </tr>
+      <tr>
+      <td>Minute</td>
+      <td>{% if current_job %} {{ minute }} {% endif %}</td>
+  
+    </tr>
+  </table> 
+  <br>
+  <form class="config-aligned-table" method="POST" action="{{ url_for('config.process_scheduler_config_form') }}">
+    {{ form_scheduler.csrf_token }}
+    {{ form_scheduler.enable_job.label }}
+    {{ form_scheduler.enable_job }}
+    <br>
+    {{ form_scheduler.hour.label }}
+    {{ form_scheduler.hour }}
+    {{ form_scheduler.minute.label }}
+    {{ form_scheduler.minute }}
+    {{ form_scheduler.submit }}
+  </form>
+
+  <h2 class="config-aligned-table">Mail config</h2>
+
+  <table class="config-aligned-table">
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Notification email</td>
+      <td>{% if mail_configuration %} {{ mail_configuration.notification_email }} {% else %} Null {% endif %}</td>
+    </tr>
+    <tr>
+      <td>Notification receivers email</td>
+      <td>{% if mail_configuration %} {{ mail_configuration.notification_receivers_email }} {% else %} Null {% endif %}</td>
+    </tr>
+    <tr>
+      <td>Notification pass</td>
+      <td>{% if mail_configuration %} {{ mail_configuration.notification_pass }} {% else %} Null {% endif %}</td>
+    </tr>
+      <tr>
+        <td>Notification smtp server</td>
+        <td>{% if mail_configuration %} {{ mail_configuration.notification_smtp_server }} {% else %} Null {% endif %}</td>
+      </tr>
+  </table>
+
+  <p class="config-aligned-table">List receivers emails in format: email@foo.foo,mail2@foo.foo</p>
+
+  <form class="config-aligned-table" method="POST" action="{{ url_for('config.process_mail_config_form') }}">
+    {{form_mail.csrf_token}}
+    {{form_mail.notification_email.label}}
+    {{form_mail.notification_email}}
+    {{ form_mail.notification_receivers_email.label }}
+    {{ form_mail.notification_receivers_email }}
+    {{ form_mail.notification_pass.label }}
+    {{ form_mail.notification_pass }}
+    {{ form_mail.notification_smtp_server.label }}
+    {{ form_mail.notification_smtp_server }}
+    {{ form_mail.submit }}
+  </form>
+
+  {% endblock %}

@@ -63,6 +63,12 @@ body {
   }
 
 
+  .config-aligned-table {
+    width: fit-content; /* Set the width to auto to fit the content */
+    margin-left: auto; /* Center the table horizontally */
+    margin-right: auto;
+}
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -92,3 +98,5 @@ body {
   tr:nth-child(even) {
       background-color: #f2f2f2;
   }
+
+
