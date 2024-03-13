@@ -74,5 +74,4 @@ def process_mail_config_form():
                                       notification_pass=form_mail.data['notification_pass'],notification_smtp_server=form_mail.data['notification_smtp_server'])
         db.session.add(new_mail_config)
         db.session.commit()
-    print(form_mail.data,flush=True)
     return redirect('/config')

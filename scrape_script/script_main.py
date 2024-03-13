@@ -2,6 +2,7 @@ from scrape_script.scrape_wakacje_pl import Scrape_wakacje_pl
 from scrape_script.report_generator import ReportGenerator
 from scrape_script.email_notification import Email_notifi
 from scrape_script.file_manager import file_manager
+from scrape_script.Mail_Config import MailConfig
 
 
 class ScrapeControler:
@@ -25,6 +26,9 @@ class ScrapeControler:
         
 
         if FM.reports_files_presence_check():
-            EN = Email_notifi()
-            EN.send_message()
-            FM.delete_report_files()
+            CM = MailConfig()
+            mail_config = CM.get_config()
+            if mail_config:
+                EN = Email_notifi(mail_config)
+                EN.send_message()
+                FM.delete_report_files()

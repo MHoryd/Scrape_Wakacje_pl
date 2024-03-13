@@ -10,11 +10,11 @@ import os
 class Email_notifi():
     
 
-    def __init__(self):
-        self.sender = os.environ.get('Notification_email')
-        self.receivers = os.environ.get('Notification_receivers_email').split(',')
-        self.password = os.environ.get('Notification_pass')
-        self.smtp_server = os.environ.get('Notification_smtp_server')
+    def __init__(self,mail_config):
+        self.sender = mail_config.notification_email
+        self.receivers = mail_config.notification_receivers_email
+        self.password = mail_config.notification_pass
+        self.smtp_server = mail_config.notification_smtp_server
 
 
     def create_message(self, receiver):
@@ -39,10 +39,17 @@ class Email_notifi():
             server = SMTP(self.smtp_server)
             server.starttls()
             server.login(self.sender, self.password)
-            for receiver in self.receivers:
+            for receiver in self.process_receivers(self.receivers):
                 msg = self.create_message(receiver).as_string()
                 server.sendmail(self.sender,receiver,msg)
             server.quit()
         except Exception as e:
             print(f"Error: Unable to establish an SMTP connection{datetime.now()}")
-            print(e)
+            print(e, flush=True)
+
+    def process_receivers(self, receivers):
+        if ',' in receivers:
+            receivers_list = receivers.split(',')
+            return receivers_list
+        else: 
+            return [receivers]
