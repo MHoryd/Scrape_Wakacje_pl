@@ -30,5 +30,6 @@ class ScrapeControler:
             mail_config = CM.get_config()
             if mail_config:
                 EN = Email_notifi(mail_config)
+                EN.prepare_reports_to_send()
                 EN.send_message()
                 FM.delete_report_files()

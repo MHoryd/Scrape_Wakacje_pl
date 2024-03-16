@@ -49,7 +49,7 @@ class Scrape_wakacje_pl:
                 duration_length_elem = offer.xpath(".//span[@data-testid='offer-listing-duration-day']/text()")
                 new_offer['duration'] = int(duration_length_elem[1])
                 raw_offer_href = offer.get('href')
-                new_offer['offer_link']= f"https://www.wakacje.pl/{raw_offer_href}/?od-{formatted_start_date},{int(duration_length_elem[1])}-dni,{self.param['amenities']}{self.param['departure_city']}"
+                new_offer['offer_link']= f"{raw_offer_href}/?od-{formatted_start_date},{int(duration_length_elem[1])}-dni,{self.param['amenities']}{self.param['departure_city']}"
                 self.deals_dictionary_list.append(new_offer)
 
         return self.deals_dictionary_list

@@ -1,4 +1,5 @@
 from datetime import datetime
+import urllib.parse
 
 class ReportGenerator:
 
@@ -43,10 +44,12 @@ class ReportGenerator:
             start_date = item['start_date']
             end_date = item['end_date']
             duration = item['duration']
-
+            
             self.html_template += f"""
             <li>
-                <p>Price: {price}, start_date: {start_date}, end_date: {end_date}, duration: {duration}</p><a href="{offer_link}">{offer_link}</a>
+                <p>Price: {price}, start_date: {start_date}, end_date: {end_date},
+                  duration: {duration}</p>
+                  {offer_link}
             </li>"""
 
 
